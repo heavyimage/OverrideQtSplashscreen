@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void QSplashScreen::setPixmap(QPixmap const&){
+void QSplashScreen::setPixmap(const QPixmap &pixmap){
     printf("hello world!");
+    QSplashScreen::setPixmap(pixmap);
 }

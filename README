@@ -1,1 +1,35 @@
-env LD_PRELOAD=$PWD/unrandom.so ./random_nums
+explore header: /usr/include/Qt/qsplashscreen.h
+    QSplashScreen::qt_metacall(QMetaObject::Call, int, void**)
+    QSplashScreen::qt_metacast(char const*)
+    QSplashScreen::showMessage(QString const&, int, QColor const&)
+    QSplashScreen::drawContents(QPainter*)
+    QSplashScreen::mousePressEvent(QMouseEvent*)
+    QSplashScreen::event(QEvent*)
+    QSplashScreen::setPixmap(QPixmap const&)
+    QSplashScreen::QSplashScreen(QPixmap const&, QFlags<Qt::WindowType>)
+    QSplashScreen::~QSplashScreen()
+    Nuke::setSplashScreen(QSplashScreen*)
+    QSplashScreen::metaObject() const
+    typeinfo for QSplashScreen
+    typeinfo for Foundry::About::NukeAboutScreenT<QSplashScreen>
+    typeinfo for Foundry::About::NukeSplashScreen
+    typeinfo name for Foundry::About::NukeAboutScreenT<QSplashScreen>
+    typeinfo name for Foundry::About::NukeSplashScreen
+    vtable for Foundry::About::NukeAboutScreenT<QSplashScreen>
+    vtable for Foundry::About::NukeSplashScreen
+
+setenv QMAKESPEC /usr/lib64/qt4/mkspecs/linux-g++
+qmake
+
+# run patch
+env LD_PRELOAD=$PWD/splish_splash.so nuke
+
+
+# TODO:
+get rid of maya shit
+stop wtih the ln'ing
+
+write up tutorial
+nm -D /path/to/libnuke.so (+ studio?) -- grep for splash
+use c++filt -n to unmask function names
+put function signature into own file
