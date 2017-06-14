@@ -1,0 +1,1 @@
+env LD_PRELOAD=$PWD/unrandom.so ./random_nums
