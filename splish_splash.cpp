@@ -28,31 +28,6 @@ void QSplashScreen::setPixmap(const QPixmap &pixmap){
     orig_setpixmap_f_type orig_setpixmap;
     orig_setpixmap = (orig_setpixmap_f_type)dlsym(RTLD_NEXT, "_ZN13QSplashScreen9setPixmapERK7QPixmap");
     this->*orig_setpixmap(hacked_pixmap);
-
-
-    // OPTION 2: Re-implment splashscreen function
-    /*
-    Q_D(QSplashScreen);
-
-    if (hacked_pixmap.hasAlpha()) {
-        QPixmap opaque(hacked_pixmap.size());
-        QPainter p(&opaque);
-        p.fillRect(0, 0, hacked_pixmap.width(), hacked_pixmap.height(), palette().background());
-        p.drawPixmap(0, 0, hacked_pixmap);
-        p.end();
-        d->pixmap = opaque;
-    } else {
-        d->pixmap = hacked_pixmap;
-    }
-
-    QRect r(0, 0, d->pixmap.size().width(), d->pixmap.size().height());
-    resize(d->pixmap.size());
-    move(QApplication::desktop()->screenGeometry().center() - r.center());
-    if (!isVisible())
-        d->drawContents();
-    else
-        repaint();
-    */
 }
 
 
