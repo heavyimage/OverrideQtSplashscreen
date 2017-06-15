@@ -1,5 +1,3 @@
-//#include <qsplashscreen.h>
-//#include <QWidget>
 #include <QApplication>
 #include <QSplashScreen>
 #include <stdio.h>
