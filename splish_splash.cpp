@@ -7,8 +7,7 @@
 #define _GNU_SOURCE
 #include <dlfcn.h>
 
-typedef void (*orig_setpixmap_f_type)(const QPixmap &pixmap);
-typedef void (QSplashScreen::*orig_setpixmap_f_type)(const QPixmap &pixmap);
+typedef void (*orig_setpixmap_f_type)(QSplashScreen *, const QPixmap &pixmap);
 
 void QSplashScreen::setPixmap(const QPixmap &pixmap){
     printf("YO YO YO\n\n\n\n");
@@ -25,8 +24,5 @@ void QSplashScreen::setPixmap(const QPixmap &pixmap){
     // OPTION 1: Attempt to grab OG setPixmap function and pass along fake image to that...
     orig_setpixmap_f_type orig_setpixmap;
     orig_setpixmap = (orig_setpixmap_f_type)dlsym(RTLD_NEXT, "_ZN13QSplashScreen9setPixmapERK7QPixmap");
-    this->*orig_setpixmap(hacked_pixmap);
+    orig_setpixmap(this, hacked_pixmap);
 }
-
-
-
