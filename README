@@ -33,3 +33,4 @@ write up tutorial
 nm -D /path/to/libnuke.so (+ studio?) -- grep for splash
 use c++filt -n to unmask function names
 put function signature into own file
+explain changes to .pro file (disable linking)
