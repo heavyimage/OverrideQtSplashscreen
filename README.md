@@ -1,4 +1,4 @@
-This repo contains a tiny bit (~30 line) of c++ which compile to a .so
+This repo contains a tiny bit (~30 lines) of c++ which compile to a .so
 file that allows you to dynamically change a Qt application's
 QSplashScreen::setPixmap() method to use an image you provide via the
 OVERRIDE_QT_SPLASH environment variable.
