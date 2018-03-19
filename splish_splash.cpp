@@ -26,6 +26,8 @@ void QSplashScreen::setPixmap(const QPixmap &pixmap){
 
     // Use some nuts function pointer black magic to replace the
     // compiled QSplashScreen::setPixmap() with ours...
+    //
+    // Big thanks to Antonio Patriarca for the assist here!
     orig_setpixmap_f_type orig_setpixmap;
     orig_setpixmap = (orig_setpixmap_f_type)dlsym(RTLD_NEXT, FUNC_SYMBOL);
     orig_setpixmap(this, hacked_pixmap);
