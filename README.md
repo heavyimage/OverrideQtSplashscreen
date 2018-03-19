@@ -5,22 +5,27 @@ OVERRIDE_QT_SPLASH environment variable.
 
 I created this because I was annoyed that it was impossible to change
 Nuke's opening splash screen the same way you can in other DCC apps like
-Maya and Houdini.
+Maya and Houdini!
 
-# Instructions:
+## Instructions:
 * Download code and cd into repo
 * run make
-* setenv OVERRIDE_QT_SPLASH /path/to/silly/image.png
+* setenv OVERRIDE_QT_SPLASH $NEW_SPLASH
 * env LD_PRELOAD=$PWD/libsplish_splash.so.so.1.0.0 $APP
 
-(where $APP is a qt application that draws a splash screen using this method)
+where:
+* $NEW_SPLASH is a silly other image
+* $APP is a qt application that draws a splash screen using this method
 
-# Caveats:
+## Caveats:
 * Might only work for nuke 10.0v5
 * Will only work on linux / places where LD_PRELOAD is supported
 * Might not work at all
 
-# Process:
+## LD_PRELOAD
+The heart of this trick involves using LD_PRELOAD.  For an explanation of this powerful feature of the dynamic linker, check out [this writeup](https://rafalcieslak.wordpress.com/2013/04/02/dynamic-linker-tricks-using-ld_preload-to-cheat-inject-features-and-investigate-programs/)
+
+## Process:
 * nm -D /path/to/libnuke.so (+ studio?) -- grep for splash
 * use c++filt -n to unmask function names
 * explore header:
@@ -50,5 +55,5 @@ Maya and Houdini.
 * TODO: explain changes to .pro file (disable linking)
 * generate a makefile from the .pro file also using qmake
 
-# TODO:
+## TODO:
 * stop with the ln'ing
