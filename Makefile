@@ -16,9 +16,9 @@ CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I/usr/lib64/qt4/mkspecs/linux-g++ -I. -I/opt/autodesk/maya-2015.sp5/include/QtCore -I/opt/autodesk/maya-2015.sp5/include/QtGui -I/opt/autodesk/maya-2015.sp5/include -I. -I/usr/include/Qt -I/usr/include/QtCore -I/usr/include/QtGui -I.
 LINK          = g++
 LFLAGS        = -shared -Wl,-soname,libsplish_splash.so.so.1
-LIBS          = $(SUBLIBS)   -L/net/global/opt/foundry/nuke-10.0v5 -lQtGui -lQtCore -lpthread 
+LIBS          = $(SUBLIBS)   -L/net/global/opt/foundry/nuke-10.0v5 -lQtGui -lQtCore -lpthread
 AR            = ar cqs
-RANLIB        = 
+RANLIB        =
 QMAKE         = /opt/autodesk/maya-2015.sp5/bin/qmake
 TAR           = tar -cf
 COMPRESS      = gzip -9f
@@ -26,7 +26,7 @@ COPY          = cp -f
 SED           = sed
 COPY_FILE     = $(COPY)
 COPY_DIR      = $(COPY) -r
-STRIP         = 
+STRIP         =
 INSTALL_FILE  = install -m 644 -p
 INSTALL_DIR   = $(COPY_DIR)
 INSTALL_PROGRAM = install -m 755 -p
@@ -43,7 +43,7 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = splish_splash.cpp 
+SOURCES       = splish_splash.cpp
 OBJECTS       = splish_splash.o
 DIST          = /usr/lib64/qt4/mkspecs/common/g++.conf \
 		/usr/lib64/qt4/mkspecs/common/unix.conf \
@@ -65,7 +65,7 @@ DIST          = /usr/lib64/qt4/mkspecs/common/g++.conf \
 		/usr/lib64/qt4/mkspecs/features/include_source_dir.prf \
 		nuke.pro
 QMAKE_TARGET  = splish_splash.so
-DESTDIR       = 
+DESTDIR       =
 TARGET        = libsplish_splash.so.so.1.0.0
 TARGETA       = splish_splash.so.
 TARGETD       = libsplish_splash.so.so.1.0.0
@@ -97,7 +97,7 @@ first: all
 
 all: Makefile  $(TARGET)
 
-$(TARGET):  $(OBJECTS) $(SUBLIBS) $(OBJCOMP)  
+$(TARGET):  $(OBJECTS) $(SUBLIBS) $(OBJCOMP)
 	-$(DEL_FILE) $(TARGET) $(TARGET0) $(TARGET1) $(TARGET2)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS) $(OBJCOMP)
 	-: $(TARGET) $(TARGET0)
@@ -108,8 +108,8 @@ $(TARGET):  $(OBJECTS) $(SUBLIBS) $(OBJCOMP)
 
 staticlib: $(TARGETA)
 
-$(TARGETA):  $(OBJECTS) $(OBJCOMP) 
-	-$(DEL_FILE) $(TARGETA) 
+$(TARGETA):  $(OBJECTS) $(OBJCOMP)
+	-$(DEL_FILE) $(TARGETA)
 	$(AR) $(TARGETA) $(OBJECTS)
 
 Makefile: nuke.pro  /usr/lib64/qt4/mkspecs/linux-g++/qmake.conf /usr/lib64/qt4/mkspecs/common/g++.conf \
@@ -152,12 +152,12 @@ Makefile: nuke.pro  /usr/lib64/qt4/mkspecs/linux-g++/qmake.conf /usr/lib64/qt4/m
 qmake:  FORCE
 	@$(QMAKE) -o Makefile nuke.pro
 
-dist: 
-	@$(CHK_DIR_EXISTS) .tmp/splish_splash.so1.0.0 || $(MKDIR) .tmp/splish_splash.so1.0.0 
+dist:
+	@$(CHK_DIR_EXISTS) .tmp/splish_splash.so1.0.0 || $(MKDIR) .tmp/splish_splash.so1.0.0
 	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/splish_splash.so1.0.0/ && $(COPY_FILE) --parents splish_splash.cpp .tmp/splish_splash.so1.0.0/ && (cd `dirname .tmp/splish_splash.so1.0.0` && $(TAR) splish_splash.so1.0.0.tar splish_splash.so1.0.0 && $(COMPRESS) splish_splash.so1.0.0.tar) && $(MOVE) `dirname .tmp/splish_splash.so1.0.0`/splish_splash.so1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/splish_splash.so1.0.0
 
 
-clean:compiler_clean 
+clean:compiler_clean
 	-$(DEL_FILE) $(OBJECTS)
 	-$(DEL_FILE) *~ core *.core
 
@@ -165,7 +165,7 @@ clean:compiler_clean
 ####### Sub-libraries
 
 distclean: clean
-	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) $(TARGET)
 	-$(DEL_FILE) $(TARGET0) $(TARGET1) $(TARGET2) $(TARGETA)
 	-$(DEL_FILE) Makefile
 
@@ -194,11 +194,11 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: 
+compiler_clean:
 
 ####### Compile
 
-splish_splash.o: splish_splash.cpp 
+splish_splash.o: splish_splash.cpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o splish_splash.o splish_splash.cpp
 
 ####### Install
