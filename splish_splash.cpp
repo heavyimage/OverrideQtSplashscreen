@@ -7,11 +7,13 @@
 #define _GNU_SOURCE
 #include <dlfcn.h>
 
+const char* FUNC_SYMBOL = "_ZN13QSplashScreen9setPixmapERK7QPixmap";
+const char* ENV_VAR_NAME = "OVERRIDE_QT_SPLASH";
 typedef void (*orig_setpixmap_f_type)(QSplashScreen *, const QPixmap &pixmap);
 
 void QSplashScreen::setPixmap(const QPixmap &pixmap){
 
-    const char* img_path = std::getenv("CM_HACK_NUKE_SPLASH");
+    const char* img_path = std::getenv(ENV_VAR_NAME);
     printf("hacked splash: %s\n", img_path);
 
     QPixmap hacked_pixmap;
@@ -20,6 +22,6 @@ void QSplashScreen::setPixmap(const QPixmap &pixmap){
     }
 
     orig_setpixmap_f_type orig_setpixmap;
-    orig_setpixmap = (orig_setpixmap_f_type)dlsym(RTLD_NEXT, "_ZN13QSplashScreen9setPixmapERK7QPixmap");
+    orig_setpixmap = (orig_setpixmap_f_type)dlsym(RTLD_NEXT, FUNC_SYMBOL);
     orig_setpixmap(this, hacked_pixmap);
 }
