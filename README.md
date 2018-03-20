@@ -14,7 +14,7 @@ Maya and Houdini!
 * env LD_PRELOAD=$PWD/libsplish_splash.so.so.1.0.0 $APP
 
 where:
-* $NEW_SPLASH is a silly other image
+* $NEW_SPLASH is a silly other image (I recommend [this](https://guidebookgallery.org/pics/splashes/netscape/4.5-communicator.png) as a fun starting point).  Tragically animated GIFs don't work :-(
 * $APP is a qt application that draws a splash screen using this method
 
 ## Caveats:
