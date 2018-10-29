@@ -1,11 +1,6 @@
-This repo contains a tiny bit (~30 lines) of c++ which compile to a .so
-file that allows you to dynamically change a Qt application's
-QSplashScreen::setPixmap() method to use an image you provide via the
-OVERRIDE_QT_SPLASH environment variable.
+This repo contains a tiny bit (~30 lines) of c++ which compile to a .so file that allows you to dynamically change a Qt application's QSplashScreen::setPixmap() method to use an image you provide via the OVERRIDE_QT_SPLASH environment variable.
 
-I created this because I was annoyed that it was impossible to change
-Nuke's opening splash screen the same way you can in other DCC apps like
-Maya and Houdini!
+I created this because I was annoyed that it was impossible to change Nuke's opening splash screen the same way you can in other DCC apps like Maya and Houdini!
 
 ## Instructions:
 * Download code and cd into repo
