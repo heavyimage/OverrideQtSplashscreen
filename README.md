@@ -1,3 +1,9 @@
+# NOTE
+
+If you're reading this in >= 2025, you're probably better off using a more modern approach like the one by my friend @vvzen [here](https://valerioviperino.me/hacking-the-splash-screen-of-houdini/)
+
+---
+
 This repo contains a tiny bit (~30 lines) of c++ which compile to a .so file that allows you to dynamically change a Qt application's QSplashScreen::setPixmap() method to use an image you provide via the OVERRIDE_QT_SPLASH environment variable.
 
 I created this because I was annoyed that it was impossible to change Nuke's opening splash screen the same way you can in other DCC apps like Maya and Houdini!
